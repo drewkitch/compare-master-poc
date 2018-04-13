@@ -1,8 +1,8 @@
 app:
   build:
-    image: test-app
+    image: codeship/compare-master-poc
     dockerfile: Dockerfile
   volumes:
     - ./.ssh:/root/.ssh
-    - ./deployment:/deployment
-  encrypted_env_file: codeship.env.encypted
+    - ./.git:/app/.git
+  encrypted_env_file: codeship.env.encrypted
