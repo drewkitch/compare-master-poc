@@ -19,10 +19,10 @@
   command: git reset --hard
 
 - service: app
+  command: git config remote.origin.fetch +refs/heads/*:refs/remotes/origin/*
+
+- service: app
   command: /bin/bash -c 'git fetch --unshallow || true'
 
-# - service: app
-#   command: git fetch
-#
-# - service: app
-#   command: git checkout --track master origin/master
+- service: app
+  command: git checkout -b master origin/master
