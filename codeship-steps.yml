@@ -19,23 +19,10 @@
   command: git reset --hard
 
 - service: app
-  command: git checkout master
+  command: git remote update
 
-# - service: app
-#   command: git remote update
-#
-# - service: app
-#   command: git fetch
-#
-# - service: app
-#   command: git checkout -b master origin/master
+- service: app
+  command: git fetch
 
-# - name: test a deployment via scp # first add public key to deathstar.com's known hosts
-#   type: serial
-#   steps:
-#     - name: add deathstar.com to list of known hosts
-#       service: app
-#       command: /bin/bash -c "ssh-keyscan -H deathstar.com >> /root/.ssh/known_hosts"
-#     - name: perform deployment with contents of deployment folder
-#       service: app
-#       command: scp -r /deployment dvader@deathstar.com:~/deployment
+- service: app
+  command: git checkout --track master origin/master
