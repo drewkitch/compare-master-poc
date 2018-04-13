@@ -22,10 +22,10 @@
   command: /bin/bash -c 'git fetch --unshallow || true'
 
 - service: app
-  command: /bin/bash -c 'git config remote.origin.fetch +refs/heads/*:refs/remotes/origin/*'
+  command: /bin/bash -c 'git config remote.origin.fetch +refs/heads/*:refs/remotes/origin/* && git fetch'
 
-- service: app
-  command: git fetch
+# - service: app
+#   command: git fetch
 
 - service: app
   command: git checkout -b master origin/master
