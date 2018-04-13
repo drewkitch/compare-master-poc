@@ -22,7 +22,13 @@
   command: /bin/bash -c 'git fetch --unshallow || true'
 
 - service: app
+  command: git remote -v
+
+- service: app
   command: git remote update
+
+- service: app
+  command: git remote -v
 
 - service: app
   command: git fetch
