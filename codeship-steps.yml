@@ -22,13 +22,7 @@
   command: /bin/bash -c 'git fetch --unshallow || true'
 
 - service: app
-  command: git remote -v
-
-- service: app
-  command: git remote update
-
-- service: app
-  command: git remote -v
+  command: /bin/bash -c 'git config remote.origin.fetch +refs/heads/*:refs/remotes/origin/*'
 
 - service: app
   command: git fetch
