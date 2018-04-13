@@ -19,13 +19,16 @@
   command: git reset --hard
 
 - service: app
-  command: git remote update
+  command: git checkout master
 
-- service: app
-  command: git fetch
-
-- service: app
-  command: git checkout -b master origin/master
+# - service: app
+#   command: git remote update
+#
+# - service: app
+#   command: git fetch
+#
+# - service: app
+#   command: git checkout -b master origin/master
 
 # - name: test a deployment via scp # first add public key to deathstar.com's known hosts
 #   type: serial
