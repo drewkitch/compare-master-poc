@@ -4,6 +4,5 @@ app:
     dockerfile: Dockerfile
   volumes:
     - ./.ssh:/root/.ssh
-    - ./.git:/app/.git
   encrypted_env_file: codeship.env.encrypted
   cached: true
