@@ -19,6 +19,6 @@
   service: app
   command: /bin/bash -c 'source /master-branch-app/compare-master.sh'
 
-- name: use results of comparison
+- name: use results of comparison in main app
   service: app
   command: cat /tmp/comparison-results.txt
