@@ -15,24 +15,10 @@
   service: app
   command: /bin/bash -c "ssh -T git@github.com 2>&1 | grep 'successfully authenticated'"
 
-- service: app
-  command: git reset --hard
+- name: set up master branch app and perform comparison
+  service: app
+  command: /bin/bash -c 'source /master-branch-app/compare-master.sh'
 
-- service: app
-  command: git remote update
-
-- service: app
-  command: git fetch
-
-- service: app
-  command: git checkout -b master origin/master
-
-# - name: test a deployment via scp # first add public key to deathstar.com's known hosts
-#   type: serial
-#   steps:
-#     - name: add deathstar.com to list of known hosts
-#       service: app
-#       command: /bin/bash -c "ssh-keyscan -H deathstar.com >> /root/.ssh/known_hosts"
-#     - name: perform deployment with contents of deployment folder
-#       service: app
-#       command: scp -r /deployment dvader@deathstar.com:~/deployment
+- name: use results of comparison in main app
+  service: app
+  command: cat /tmp/comparison-results.txt
