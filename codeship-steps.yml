@@ -15,14 +15,10 @@
   service: app
   command: /bin/bash -c "ssh -T git@github.com 2>&1 | grep 'successfully authenticated'"
 
-- service: app
-  command: git reset --hard
+- name: set up master branch app and perform comparison
+  service: app
+  command: /bin/bash -c 'source /master-branch-app/compare-master.sh'
 
-- service: app
-  command: /bin/bash -c 'git fetch --unshallow || true'
-
-- service: app
-  command: /bin/bash -c 'git config remote.origin.fetch +refs/heads/*:refs/remotes/origin/* && git fetch && git checkout -b master origin/master'
-
-- service: app
-  command: git status
+- name: use results of comparison
+  service: app
+  command: cat /tmp/comparison-results.txt
